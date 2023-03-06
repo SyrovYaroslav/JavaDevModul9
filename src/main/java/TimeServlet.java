@@ -40,7 +40,9 @@ public class TimeServlet extends HttpServlet {
         if(timezone == null) {
             if(cookies.length > 0) {
                 for (Cookie cookie : cookies) {
-                    timezone = cookie.getValue();
+                    if(cookie.getName().equals("timezone")) {
+                        timezone = cookie.getValue();
+                    }
                 }
             } else {
                 timezone = "UTC";
